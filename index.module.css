@@ -1,0 +1,217 @@
+*{
+  margin: 0;
+  padding: 0;
+ 
+}
+
+body {
+  scroll-behavior: smooth;
+  background-color: rgb(200, 217, 247);
+} 
+
+h3{
+  font-family: Arial, Helvetica, sans-serif;
+  color: #9333cf;
+}
+
+.content {
+  margin-top: 3%;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 160%;
+  margin-left: 10%;
+  margin-right: 10%;
+  align-items: center;
+  text-align: justify;
+}
+
+.logo img {
+  width: 25%;
+  border-radius: 32px;
+  margin-top: 8%;
+  box-shadow: 2px 2px 12px rgb(230, 230, 230), -2px -2px 12px  rgba(216, 216, 216, 0.19);
+}
+
+.container{
+  background-color: rgb(246, 246, 246);
+  height: 100%;
+  width: 1000px;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  padding-bottom: 5%;
+  border: 1px solid rgb(235, 235, 235);
+  box-shadow: 12px 0px 24px 2px rgba(0, 0, 0, 0.08), 0px 12px 12px 2px rgba(0, 0, 0, 0.08);
+}
+
+ul > li {
+    margin-left: 20px;
+}
+
+.navbar {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  top: 2%;
+  position: sticky;
+  margin-left:29%;
+  margin-right:29%;
+  border-radius: 3.5px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 1px 2px 0 rgba(73, 73, 73, 0.2), 0 2px 6px 0 rgba(216, 216, 216, 0.19);
+}
+
+
+.home {
+  text-decoration: none;
+  color: rgb(41, 166, 19);
+  padding: 3px 10px;
+  text-align: center;
+  font-size: auto;
+  margin: 4px 8px;
+  transition: 0.3s;
+  background-color: rgba(255, 255, 255, 0.458);
+  border-radius: 7px;
+}
+
+.home:hover {
+  opacity: 1;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 1px 2px 0 rgba(73, 73, 73, 0.2), 0 2px 6px 0 rgba(216, 216, 216, 0.19);
+}
+
+.git {
+  text-decoration: none;
+  color: rgb(166, 127, 19);
+  padding: 3px 10px;
+  text-align: center;
+  font-size: auto;
+  margin: 4px 8px;
+  transition: 0.3s;
+  border-radius: 7px;
+  background-color: rgba(255, 255, 255, 0.458);
+}
+
+.git:hover {
+  opacity: 1;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 1px 2px 0 rgba(73, 73, 73, 0.2), 0 2px 6px 0 rgba(216, 216, 216, 0.19);
+}
+
+.linkedin {
+  border: none;
+  text-decoration: none;
+  color: rgb(19, 88, 166);
+  padding: 3px 10px;
+  text-align: center;
+  font-size: auto;
+  margin: 4px 8px;
+  transition: 0.3s;
+  background-color: rgba(255, 255, 255, 0.458);
+  border-radius: 7px;
+}
+
+.linkedin:hover {
+  opacity: 1;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 1px 2px 0 rgba(73, 73, 73, 0.2), 0 2px 6px 0 rgba(216, 216, 216, 0.19);
+}
+
+.cv {
+  border: none;
+  text-decoration: none;
+   color: rgb(112, 19, 166);
+  padding: 3px 10px;
+  text-align: center;
+  font-size: auto;
+  margin: 4px 8px;
+  transition: 0.3s;
+  background-color: rgba(255, 255, 255, 0.458);
+  border-radius: 7px;
+}
+
+.cv:hover {
+  opacity: 1;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 1px 2px 0 rgba(73, 73, 73, 0.2), 0 2px 6px 0 rgba(216, 216, 216, 0.19);
+}
+
+.email {
+  border: none;
+  text-decoration: none;
+  color: rgb(166, 41, 19);
+  padding: 3px 10px;
+  text-align: center;
+  font-size: auto;
+   margin: 4px 8px;
+  transition: 0.3s;
+  background-color: rgba(255, 255, 255, 0.458);
+  border-radius: 7px;  
+}
+
+.email:hover {
+  opacity: 1;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 1px 2px 0 rgba(73, 73, 73, 0.2), 0 2px 6px 0 rgba(216, 216, 216, 0.19);
+}
+
+.cert, .edu, .exp, .pro{
+  border: none;
+  text-decoration: none;
+  color: rgb(35, 35, 35);
+  padding: 0px 3px;
+  text-align: center;
+  font-size: auto;
+  transition: 0.3s;
+  border-radius: 3.5px;
+}
+
+
+p{
+  border: none;
+  text-decoration: none;
+  color: rgb(19, 92, 166);
+  padding: 0px 3px;
+  font-size: auto;
+  transition: 0.3s;
+  border-radius: 3.5px;
+}
+
+
+iframe {
+  margin-top: 6%;
+  height:790px;
+  width:1000px;  
+  box-shadow: 12px 0px 24px 2px rgba(0, 0, 0, 0.08), 0px 12px 12px 2px rgba(0, 0, 0, 0.08);
+}
+
+#h1 {
+  color: blue;
+}
+
+
+@media screen and (max-width: 1280px) {
+	.logo {
+		font-size: 32px;
+	}
+	a,.content {
+		font-size: 18px;
+		gap: 15px;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.logo,.content {
+		font-size: 24px;
+	}
+}
+
+@media screen and (max-width: 640px) {
+	a, .content {
+		justify-content: flex-end;
+	}
+	.a, .content {
+		display: none;
+	}
+}	
