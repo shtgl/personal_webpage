@@ -33,20 +33,21 @@ object {
 
 .logo img {
   width: 20%;
-  border-radius: 20px;
-  margin-top: 8%;
-  box-shadow: 2px 2px 12px rgb(230, 230, 230), -2px -2px 12px  rgba(216, 216, 216, 0.19);
+  border-radius: 21px;
+  margin-top: 5%;
+  margin-bottom: 2%;
+  box-shadow: 2px 2px 3px 2px rgba(201, 201, 201, 0.26), -2px -2px 3px 2px rgba(225, 225, 225, 0.466);
 }
 
 .container{
-  background-color: rgb(246, 246, 246);
+  background-color: rgb(244, 244, 244);
   height: 100%;
   width: 1000px;
   margin-top: 3%;
   margin-bottom: 3%;
   padding-bottom: 5%;
   border: 1px solid rgb(235, 235, 235);
-  box-shadow: 12px 0px 24px 2px rgba(0, 0, 0, 0.08), 0px 12px 12px 2px rgba(0, 0, 0, 0.08);
+  box-shadow: 2px 2px 3px 2px rgba(204, 204, 204, 0.26), -2px -2px 3px 2px rgba(215, 215, 215, 0.466);
 }
 
 ul > li {
@@ -65,9 +66,9 @@ ul > li {
   padding: 8px;
   margin-left:29%;
   margin-right:29%;
-  border-radius: 20px;
+  border-radius: 42px;
   backdrop-filter: blur(20px);
-  box-shadow: 3px 2px 3px 2px rgba(123, 123, 123, 0.26), -3px -2px 3px 2px rgba(255, 255, 255, 0.466);
+  box-shadow: 2px 2px 3px 2px rgba(201, 201, 201, 0.26), -2px -2px 3px 2px rgba(225, 225, 225, 0.466);
 }
 
 
@@ -191,7 +192,7 @@ iframe {
   margin-top: 6%;
   height:790px;
   width:1000px;  
-  box-shadow: 12px 0px 24px 2px rgba(0, 0, 0, 0.08), 0px 12px 12px 2px rgba(0, 0, 0, 0.08);
+  box-shadow: 2px 2px 3px 2px rgba(204, 204, 204, 0.26), -2px -2px 3px 2px rgba(215, 215, 215, 0.466);
 }
 
 #h1 {
