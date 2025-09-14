@@ -79,15 +79,15 @@ ul > li {
   margin: 2px 12px;
   text-align: center;
   font-size: auto;
-  transition: 0.3s;
-  background-color:  rgba(255, 255, 255, 0.75);
-  border-radius: 7px;
+  transition: ease-in-out 0.4s;
+  background-color:  rgba(255, 255, 255, 0.832);
+  border-radius: 2px;
 }
 
 .home:hover {
   opacity: 1;
+  border-radius: 10px;
   background-color: rgb(255, 255, 255);
-  box-shadow: 0 1px 2px 0 rgba(73, 73, 73, 0.2), 0 2px 6px 0 rgba(216, 216, 216, 0.19);
 }
 
 .git {
@@ -97,15 +97,15 @@ ul > li {
   margin: 2px 12px;
   text-align: center;
   font-size: auto;
-  transition: 0.3s;
-  border-radius: 7px;
-  background-color:  rgba(255, 255, 255, 0.75);
+  transition: ease-in-out 0.4s;
+  border-radius: 2px;
+  background-color:  rgba(255, 255, 255, 0.832);
 }
 
 .git:hover {
   opacity: 1;
+  border-radius: 10px;
   background-color: rgb(255, 255, 255);
-  box-shadow: 0 1px 2px 0 rgba(73, 73, 73, 0.2), 0 2px 6px 0 rgba(216, 216, 216, 0.19);
 }
 
 .linkedin {
@@ -116,15 +116,15 @@ ul > li {
   text-align: center;
   font-size: auto;
   margin: 2px 12px;
-  transition: 0.3s;
-  background-color: rgba(255, 255, 255, 0.75);
-  border-radius: 7px;
+  transition: ease-in-out 0.4s;
+  background-color: rgba(255, 255, 255, 0.832);
+  border-radius: 2px;
 }
 
 .linkedin:hover {
   opacity: 1;
+  border-radius: 10px;
   background-color: rgb(255, 255, 255);
-  box-shadow: 0 1px 2px 0 rgba(73, 73, 73, 0.2), 0 2px 6px 0 rgba(216, 216, 216, 0.19);
 }
 
 .cv {
@@ -135,15 +135,15 @@ ul > li {
   text-align: center;
   font-size: auto;
   margin: 2px 12px;
-  transition: 0.3s;
-  background-color:  rgba(255, 255, 255, 0.75);
-  border-radius: 7px;
+  transition: ease-in-out 0.4s;
+  background-color:  rgba(255, 255, 255, 0.832);
+  border-radius: 2px;
 }
 
 .cv:hover {
   opacity: 1;
+  border-radius: 10px;
   background-color: rgb(255, 255, 255);
-  box-shadow: 0 1px 2px 0 rgba(73, 73, 73, 0.2), 0 2px 6px 0 rgba(216, 216, 216, 0.19);
 }
 
 .email {
@@ -154,15 +154,15 @@ ul > li {
   text-align: center;
   font-size: auto;
    margin: 2px 12px;
-  transition: 0.3s;
-  background-color:  rgba(255, 255, 255, 0.75);
-  border-radius: 7px;  
+  transition: ease-in-out 0.4s;
+  background-color:  rgba(255, 255, 255, 0.832);
+  border-radius: 2px;  
 }
 
 .email:hover {
   opacity: 1;
+  border-radius: 10px;
   background-color: rgb(255, 255, 255);
-  box-shadow: 0 1px 2px 0 rgba(73, 73, 73, 0.2), 0 2px 6px 0 rgba(216, 216, 216, 0.19);
 }
 
 .cert, .edu, .exp, .pro{
@@ -172,7 +172,7 @@ ul > li {
   padding: 0px 3px;
   text-align: center;
   font-size: auto;
-  transition: 0.3s;
+  transition: ease-in-out 0.4s;
   border-radius: 3.5px;
 }
 
@@ -183,7 +183,7 @@ p{
   color: rgb(19, 92, 166);
   padding: 0px 3px;
   font-size: auto;
-  transition: 0.3s;
+  transition: ease-in-out 0.4s;
   border-radius: 3.5px;
 }
 
