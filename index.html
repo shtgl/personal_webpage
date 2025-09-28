@@ -1,74 +1,212 @@
+<!-- Updated Responsive Profile Page with sticky navbar fix -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Shashwat Singhal</title>
-	<link rel="stylesheet" href="index.module.css">
-	<link rel="icon" type="image/x-icon" href="images/home.png">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shashwat Singhal</title>
+  <link rel="icon" type="image/x-icon" href="images/home.png">
+  <style>
+    :root{
+      --accent-purple: #9333cf;
+      --green: rgb(41, 166, 19);
+      --gold: rgb(166, 127, 19);
+      --linkedin-blue: rgb(19, 88, 166);
+      --cv-purple: rgb(112, 19, 166);
+      --email-red: rgb(166, 41, 19);
+      --card-bg: rgb(244, 244, 244);
+      --pill-bg: rgba(255,255,255,0.832);
+      --shadow-1: 2px 2px 3px 2px rgba(204, 204, 204, 0.26);
+      --shadow-2: -2px -2px 3px 2px rgba(215, 215, 215, 0.466);
+    }
+
+    *{ box-sizing: border-box; margin: 0; padding: 0; }
+    html,body{ height:100%; }
+
+    body {
+      scroll-behavior: smooth;
+      background-color: rgb(231, 231, 231);
+      font-family: Arial, Helvetica, sans-serif;
+      color: rgb(35,35,35);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height: 1.6;
+      font-size: clamp(14px, 1.2vw + 12px, 18px);
+      padding-top: 80px; /* space for sticky navbar */
+    }
+
+    /* Sticky Navbar */
+    .navbar {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		justify-content: center;
+		align-items: center;
+		padding: 8px;
+		width: min(670px, 94%);
+		border-radius: 42px;
+		backdrop-filter: blur(20px);
+		box-shadow: var(--shadow-1), var(--shadow-2);
+		background: transparent;
+		position: fixed;
+		top: 10px;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 999;
+		}
+
+	.navbar a {
+		text-decoration: none;
+		padding: 5px 12px;      /* use same padding in both files */
+		margin: 2px 6px;
+		border-radius: 8px;
+		background: var(--pill-bg);
+		transition: all 0.25s ease-in-out;
+		display: inline-flex;
+		align-items: center;
+		line-height: 1.4;
+		gap: 6px;
+		font-size: 1rem;
+		}
+
+		.navbar a:hover {
+		opacity: 1;
+		border-radius: 10px;
+		background-color: white;
+		}
+
+    .cv{ color: var(--cv-purple); }
+    .email{ color: var(--email-red); }
+    .linkedin{ color: var(--linkedin-blue); }
+    .git{ color: var(--gold); }
+
+
+    .container{
+      background-color: var(--card-bg);
+      max-width: 1000px;
+      width: 94%;
+      margin: 2% auto;
+      padding: clamp(18px, 3vw, 44px);
+      border: 1px solid rgb(235, 235, 235);
+      box-shadow: var(--shadow-1), var(--shadow-2);
+      border-radius: 8px;
+    }
+
+    .logo{ text-align: center; margin-bottom: 12px; }
+    .logo img{ width: clamp(100px, 20%, 220px); height: auto; border-radius:21px; box-shadow: 2px 2px 3px 2px rgba(201, 201, 201, 0.26), -2px -2px 3px 2px rgba(225, 225, 225, 0.466); }
+
+    .content{
+      max-width: 900px;
+      margin: 10px auto;
+      text-align: justify;
+      color: rgb(19,92,166);
+    }
+
+    h3{ color: var(--accent-purple); margin-top: 18px; font-size: clamp(18px, 1.6vw + 12px, 24px); }
+    h4{ font-size: clamp(15px, 1.2vw + 12px, 16px); color: rgb(35,35,35); margin: 6px 0; }
+
+    ul{ margin-left: 18px; margin-top: 8px; }
+    ul > li{ margin-bottom: 6px; }
+
+    iframe, object{
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      max-height: 70vh;
+      aspect-ratio: 16 / 9;
+      margin-top: 20px;
+      box-shadow: var(--shadow-1), var(--shadow-2);
+      border: none;
+    }
+
+    .cert, .edu, .exp, .pro{ color: rgb(35,35,35); text-decoration:none; padding: 0 3px; }
+    .projects a, .certifications a{ text-decoration:none; color: inherit; }
+
+    @media (max-width: 768px){
+      body{ font-size: clamp(14px, 1.4vw + 11px, 16px); }
+      .container{ padding: 16px; }
+      .navbar{ width: 96%; padding: 6px; border-radius: 16px; }
+      .logo img{ width: 40%; }
+    }
+
+    @media (max-width: 480px){
+      .navbar{ flex-direction: column; gap: 8px; align-items: stretch; padding: 8px; }
+      .navbar a{ justify-content: center; padding: 10px; }
+      .logo img{ width: 60%; }
+      .content{ font-size: 14px; }
+      .container{ padding: 14px; }
+    }
+
+    a:focus{ outline: 3px solid rgba(147,51,207,0.18); outline-offset: 3px; }
+
+  </style>
 </head>
-
-
 <body>
-	<center>
-		<div class="navbar">
-			<a class="cv" href="cv.html" target="_blank" title="CV" alt="CV">CV</a>
-			<a class="email" href="mailto:shwatgal@gmail.com" target="_blank" alt="mailid" title="shwatgal@gmail.com">Email</a>
-			<a class="linkedin" href="https://in.linkedin.com/in/shsinghal" target="_blank" title="LinkedIn" alt="LinkedIn">LinkedIn</a>
-			<a class="git" href="https://github.com/shtgl" target="_blank" title="Github/shtgl" alt="Github">GitHub</a>
-		</div>
 
-		<div class="container">
-			<center><div class="logo">
-				<img src="./images/logo.png">
-			</div></center>		
-			
-			<div class="content">
-				Shashwat Singhal, a Computer Science graduate, has recently been exploring the evolving world of Generative AI through an internship experience. Technology often takes up a fair share of his curiosity, while games and books fill the quieter hours. Each day tends to be about trying something new, learning along the way, and keeping a sense of balance between what can be shaped and what simply unfolds on its own.
-			
-				<br><br>
-				<h3>Experience</h3>
-				<div class="experience">
-					<ul>
-						<h4>Generative AI Research Intern | <a class="exp" href="https://www.disruptivenext.com/" target="_blank" title="disruptivenext" alt="disruptivenext">DisruptiveNext</a></h4>(Dec 2024-Jun 2025)
-						<ul>
-							<li>Built web-scraping pipelines to collect structured data from online sources and used LangSmith tracing to track LLM calls for better monitoring.
-							<li>Designed agent workflows with the Model Context Protocol (MCP) so LLM agents could use server tools for multi-step tasks.</li>
-							<li>Wrote task-focused docstrings to make agent actions easier to understand, improving reliability in tool-based tasks.</li>
-							<li>Developed a conversational bot with Microsoft Azure Bot Service that supports context-aware, multi-turn user interactions.</li>
-						</ul>
-					</ul>
-				</div>
-				<br>
-				<h3>Education</h3>
-				<div class="education">
-					<ul>
-						<li><a class="edu">MIT World Peace University, Pune | B. Tech. Computer Science and Engineering</a></li>
-						<li><a class="edu">Namo Rims Junior College, Pune | Higher Secondary Certificate</a></li>
-						<li><a class="edu">Indira National School, Pune | Secondary School Certificate</a></li>
-					</uL>
-				</div>
-				<br>
-				<h3>Projects</h3>
-				<div class="projects">
-					<ul>
-						<li><a class="pro" href="https://github.com/shtgl/household_finances_app" target="_blank" title="brain tumor classification" alt="HouseholdApp">Household Finance App | Sep 2025</a></li>
-						<li><a class="pro" href="https://github.com/Vital-98/Web-RAG-Agent" target="_blank" title="brain tumor classification" alt="WebScraper">Smart Rag WebScraper | Aug 2025</a></li>
-						<li><a class="pro" href="https://github.com/shtgl/MRIBrainTumor/" target="_blank" title="brain tumor classification" alt="MRIBrainTumor">Brain Tumor Classification | Nov 2024</a></li>
-						<li><a class="pro" href="https://github.com/shtgl/ThreatClassifier" target="_blank" title="threat classification" alt="ThreatClassifier">Threat Object Classification | May 2024</a></li>
-						<li><a class="pro" href="https://github.com/shtgl/crop_health_nn" target="_blank" title="plant disease classification" alt="Crop health nn">Plant Disease Classification | Dec 2023 </a></li>
-						<li><a class="pro" href="https://github.com/shtgl/community_blog_page" target="_blank" title="blog page" alt="community_blog_page">Community Blog Page | Nov 2023</a></li>
-					</ul>
-				</div>
-				<br>
-				<h3>Certifications</h3>
-				<div class="certifications">
-					<uL>
-						<li><a class="cert" href="https://www.coursera.org/account/accomplishments/professional-cert/FKI9Y5AQK0WV" target="_blank" title="Data Analytics" alt="Data Analytics Certificate">Data Analytics | DeepLearning.AI | Jun 2025</a></li>
-						<li><a class="cert" href="https://www.coursera.org/account/accomplishments/professional-cert/NQEJS97G3GP3" target="_blank" title="Tensorflow" alt="Tensorflow Developer Certificate">Tensorflow Developer | DeepLearning.AI | Aug 2023</a></li>
-						<li><a class="cert" href="https://www.mygreatlearning.com/certificate/TFADDIMW" target="_blank" title="MySQL" alt="MySQL Basics">MySQL Basics | Great Learning | Mar 2023</a></li>
-					</uL>
-				</div>
-			</div>
-	</center>
-	</body>
+  <header>
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+      <a class="cv" href="cv.html" target="_blank" title="CV">CV</a>
+      <a class="email" href="mailto:shwatgal@gmail.com" target="_blank" title="Email">Email</a>
+      <a class="linkedin" href="https://in.linkedin.com/in/shsinghal" target="_blank" title="LinkedIn">LinkedIn</a>
+      <a class="git" href="https://github.com/shtgl" target="_blank" title="Github">GitHub</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container" aria-labelledby="intro">
+      <div class="logo">
+        <img src="./images/logo.png" alt="Shashwat logo">
+      </div>
+
+      <article class="content" id="intro">
+        <p>
+          Shashwat Singhal, a Computer Science graduate, has recently been exploring the evolving world of Generative AI through an internship experience. Technology often takes up a fair share of his curiosity, while games and books fill the quieter hours. Each day tends to be about trying something new, learning along the way, and keeping a sense of balance between what can be shaped and what simply unfolds on its own.
+        </p>
+
+        <h3>Experience</h3>
+        <div class="experience">
+          <p><strong>Generative AI Research Intern | <a class="exp" href="https://www.disruptivenext.com/" target="_blank">DisruptiveNext</a></strong> (Dec 2024 - Jun 2025)</p>
+          <ul>
+            <li>Built web-scraping pipelines to collect structured data from online sources and used LangSmith tracing to track LLM calls for better monitoring.</li>
+            <li>Designed agent workflows with the Model Context Protocol (MCP) so LLM agents could use server tools for multi-step tasks.</li>
+            <li>Wrote task-focused docstrings to make agent actions easier to understand, improving reliability in tool-based tasks.</li>
+            <li>Developed a conversational bot with Microsoft Azure Bot Service that supports context-aware, multi-turn user interactions.</li>
+          </ul>
+        </div>
+
+        <h3>Education</h3>
+        <div class="education">
+          <ul>
+            <li><a class="edu">MIT World Peace University, Pune | B. Tech. Computer Science and Engineering</a></li>
+            <li><a class="edu">Namo Rims Junior College, Pune | Higher Secondary Certificate</a></li>
+            <li><a class="edu">Indira National School, Pune | Secondary School Certificate</a></li>
+          </ul>
+        </div>
+
+        <h3>Projects</h3>
+        <div class="projects">
+          <ul>
+            <li><a class="pro" href="https://github.com/shtgl/household_finances_app" target="_blank">Household Finance App | Sep 2025</a></li>
+            <li><a class="pro" href="https://github.com/Vital-98/Web-RAG-Agent" target="_blank">Smart Rag WebScraper | Aug 2025</a></li>
+            <li><a class="pro" href="https://github.com/shtgl/MRIBrainTumor/" target="_blank">Brain Tumor Classification | Nov 2024</a></li>
+            <li><a class="pro" href="https://github.com/shtgl/ThreatClassifier" target="_blank">Threat Object Classification | May 2024</a></li>
+            <li><a class="pro" href="https://github.com/shtgl/crop_health_nn" target="_blank">Plant Disease Classification | Dec 2023</a></li>
+            <li><a class="pro" href="https://github.com/shtgl/community_blog_page" target="_blank">Community Blog Page | Nov 2023</a></li>
+          </ul>
+        </div>
+
+        <h3>Certifications</h3>
+        <div class="certifications">
+          <ul>
+            <li><a class="cert" href="https://www.coursera.org/account/accomplishments/professional-cert/FKI9Y5AQK0WV" target="_blank">Data Analytics | DeepLearning.AI | Jun 2025</a></li>
+            <li><a class="cert" href="https://www.coursera.org/account/accomplishments/professional-cert/NQEJS97G3GP3" target="_blank">Tensorflow Developer | DeepLearning.AI | Aug 2023</a></li>
+            <li><a class="cert" href="https://www.mygreatlearning.com/certificate/TFADDIMW" target="_blank">MySQL Basics | Great Learning | Mar 2023</a></li>
+          </ul>
+        </div>
+
+      </article>
+    </section>
+  </main>
+
+</body>
 </html>

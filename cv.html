@@ -1,23 +1,104 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Shashwat's CV</title>
-		<link rel="stylesheet" href="index.module.css">
-		<link rel="icon" type="image/x-icon" href="images/cv.png">
-	</head>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shashwat's CV</title>
+  <link rel="icon" type="image/x-icon" href="images/cv.png">
+  <style>
+    :root{
+      --green: rgb(41, 166, 19);
+      --gold: rgb(166, 127, 19);
+      --linkedin-blue: rgb(19, 88, 166);
+      --shadow-1: 2px 2px 3px 2px rgba(204, 204, 204, 0.26);
+      --shadow-2: -2px -2px 3px 2px rgba(215, 215, 215, 0.466);
+      --pill-bg: rgba(255,255,255,0.832);
+    }
+
+    *{ box-sizing: border-box; margin:0; padding:0; }
+    html,body{ height:100%; font-family: Arial, Helvetica, sans-serif; background: rgb(231,231,231); }
+
+    body { padding-top: 60px; }
+
+    /* Sticky Navbar */
+    .navbar {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		justify-content: center;
+		align-items: center;
+		padding: 8px;
+		width: min(670px, 94%);
+		border-radius: 42px;
+		backdrop-filter: blur(20px);
+		box-shadow: var(--shadow-1), var(--shadow-2);
+		background: transparent;
+		position: fixed;
+		top: 10px;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 999;
+	}
+
+	.navbar a {
+		text-decoration: none;
+		padding: 5px 12px;      /* use same padding in both files */
+		margin: 2px 6px;
+		border-radius: 8px;
+		background: var(--pill-bg);
+		transition: all 0.25s ease-in-out;
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		font-size: 1rem;
+		line-height: 1.4;
+	}
+
+	.navbar a:hover {
+		opacity: 1;
+		border-radius: 10px;
+		background-color: white;
+	}
+
+    .home{ color: var(--green); }
+    .email{ color: rgb(166,41,19); }
+    .linkedin{ color: var(--linkedin-blue); }
+    .git{ color: var(--gold); }
 
 
-	<body>
-		<div class="navbar">
-			<a class="home" href="index.html" title="Homepage" alt="Home">Home</a>
-			<a class="email" href="mailto:shwatgal@gmail.com" target="_blank" alt="mailid" title="shwatgal@gmail.com">Email</a>
-			<a class="linkedin" href="https://in.linkedin.com/in/shsinghal" target="_blank" title="LinkedIn" alt="LinkedIn">LinkedIn</a>
-			<a class="git" href="https://github.com/shtgl" target="_blank" title="Github/shtgl" alt="Github">GitHub</a>
-		</div>
-		<center><object data="cv/Resume-Shashwat_Singhal.pdf" type="application/pdf" title="Embedded PDF Viewer">
-		</object>
-		</center>
-		<!-- <center><iframe src="cv/Resume-Shashwat_Singhal.pdf" frameborder="0"></iframe></center> -->
-	</body>
+    object, iframe{
+      width: 94%;
+      max-width: 1000px;
+      height: 120vh;
+      margin: 80px auto 20px auto;
+      display: block;
+      box-shadow: var(--shadow-1), var(--shadow-2);
+      border: none;
+    }
+
+    @media(max-width:768px){
+      .navbar{ width:96%; padding:6px; border-radius:16px; }
+      .navbar a{ justify-content:center; padding:8px; }
+      object, iframe{ width: 96%; height: 70vh; }
+    }
+
+    @media(max-width:480px){
+      .navbar{ flex-direction: column; gap:8px; align-items: stretch; }
+      object, iframe{ width: 94%; height: 60vh; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <a class="home" href="index.html" title="Homepage">Home</a>
+    <a class="email" href="mailto:shwatgal@gmail.com" target="_blank" title="Email">Email</a>
+    <a class="linkedin" href="https://in.linkedin.com/in/shsinghal" target="_blank" title="LinkedIn">LinkedIn</a>
+    <a class="git" href="https://github.com/shtgl" target="_blank" title="Github">GitHub</a>
+  </nav>
+
+  <object data="cv/Resume-Shashwat_Singhal.pdf" type="application/pdf" title="Embedded PDF Viewer">
+    Your browser does not support PDFs. <a href="cv/Resume-Shashwat_Singhal.pdf" target="_blank">Download PDF</a>.
+  </object>
+
+</body>
 </html>
