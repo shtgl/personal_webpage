@@ -7,98 +7,156 @@
   <link rel="icon" type="image/x-icon" href="images/cv.png">
   <style>
     :root{
-      --green: rgb(41, 166, 19);
-      --gold: rgb(166, 127, 19);
-      --linkedin-blue: rgb(19, 88, 166);
-      --shadow-1: 2px 2px 3px 2px rgba(204, 204, 204, 0.26);
-      --shadow-2: -2px -2px 3px 2px rgba(215, 215, 215, 0.466);
-      --pill-bg: rgba(255,255,255,0.832);
+      --green: rgb(193, 255, 193);
+      --gold: rgb(255, 248, 193);
+      --linkedin-blue: rgb(193, 222, 255);
+      --shadow-1: 2px 2px 6px rgba(0,0,0,0.45);
+      --shadow-2: -2px -2px 6px rgba(255,255,255,0.05);
+      --pill-bg: rgba(255,255,255,0.08);
+      --bg-dark: #1a1a1a;
+      --bg-card: rgba(45,52,73,0.85);
+      --text-light: #ffffff;
+      --cv-purple: rgb(242, 193, 255);
+      --email-red: rgb(255, 193, 193);;
     }
 
-    *{ box-sizing: border-box; margin:0; padding:0; }
-    html,body{ height:100%; font-family: Arial, Helvetica, sans-serif; background: rgb(231,231,231); }
 
-    body { padding-top: 60px; }
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg,#3662d3,#93aae2);
+      min-height:100vh;
+      color:white;
+      cursor:none;
+      overflow-x:hidden;
+      padding-top:60px;
+    }
 
-    /* Sticky Navbar */
+    body { padding-top: 80px; }
+
+    /* === Custom Cursor === */
+    .cursor {
+      width: 22px;
+      height: 22px;
+      border: 2px solid rgba(255,255,255,0.7);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      border-radius: 50%;
+      position: fixed;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 2000;
+      transition: transform 0.15s ease, border-color 0.2s ease, background-color 0.2s ease;
+      backdrop-filter: blur(3px);
+    }
+    .cursor.hovered {
+      transform: translate(-50%, -50%) scale(1.6);
+      border-color: var(--gold);
+      background-color: rgba(255,255,255,0.1);
+    }
+    .cursor.clicked {
+      transform: translate(-50%, -50%) scale(0.8);
+      border-color: var(--green);
+      background-color: rgba(255,255,255,0.15);
+    }
+
+    /* Navbar */
     .navbar {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 10px;
-		justify-content: center;
-		align-items: center;
-		padding: 8px;
-		width: min(670px, 94%);
-		border-radius: 42px;
-		backdrop-filter: blur(20px);
-		box-shadow: var(--shadow-1), var(--shadow-2);
-		background: transparent;
-		position: fixed;
-		top: 10px;
-		left: 50%;
-		transform: translateX(-50%);
-		z-index: 999;
-	}
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      padding: 10px 30px;
+      width: 90%;
+      max-width: 700px;
+      border-radius: 28px;
+      background: rgba(83, 83, 83, 0.31);
+      border: 1px solid rgba(255,255,255,0.25);
+      backdrop-filter: blur(18px) saturate(160%);
+      -webkit-backdrop-filter: blur(18px) saturate(160%);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+    }
 
-	.navbar a {
-		text-decoration: none;
-		padding: 5px 12px;      /* use same padding in both files */
-		margin: 2px 6px;
-		border-radius: 8px;
-		background: var(--pill-bg);
-		transition: all 0.25s ease-in-out;
-		display: inline-flex;
-		align-items: center;
-		gap: 6px;
-		font-size: 1rem;
-		line-height: 1.4;
-	}
+    .navbar a {
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 10px;
+      background: rgba(116, 133, 241, 0.584);
+      transition: all 0.25s ease-in-out;
+      /* color: inherit; */
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .navbar a:hover {
+      transform: translateY(-2px);
+    }
+    .home { color: var(--green); }
+    .email { color: var(--red); }
+    .linkedin { color: var(--linkedin-blue); }
+    .git { color: var(--gold); }
 
-	.navbar a:hover {
-		opacity: 1;
-		border-radius: 10px;
-		background-color: white;
-	}
-
-    .home{ color: var(--green); }
-    .email{ color: rgb(166,41,19); }
-    .linkedin{ color: var(--linkedin-blue); }
-    .git{ color: var(--gold); }
-
-
-    object, iframe{
+    /* === CV Viewer Styling === */
+    object, iframe {
       width: 94%;
       max-width: 1000px;
       height: 120vh;
-      margin: 80px auto 20px auto;
+      margin: 100px auto 40px auto;
       display: block;
-      box-shadow: var(--shadow-1), var(--shadow-2);
-      border: none;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.25);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(12px);
     }
 
+    /* === Responsive === */
     @media(max-width:768px){
-      .navbar{ width:96%; padding:6px; border-radius:16px; }
-      .navbar a{ justify-content:center; padding:8px; }
-      object, iframe{ width: 96%; height: 70vh; }
+      .navbar { width: 96%; gap: 16px; padding: 10px; border-radius: 18px; }
+      object, iframe{ width: 96%; height: 80vh; }
     }
-
     @media(max-width:480px){
-      .navbar{ flex-direction: column; gap:8px; align-items: stretch; }
-      object, iframe{ width: 94%; height: 60vh; }
+      .navbar { flex-direction: column; gap: 8px; align-items: stretch; }
+      .navbar a { justify-content: center; padding: 10px; }
+      object, iframe{ width: 94%; height: 65vh; }
     }
   </style>
 </head>
 <body>
+  <!-- Custom Cursor -->
+  <div class="cursor"></div>
+
+  <!-- Navbar -->
   <nav class="navbar" role="navigation" aria-label="Main navigation">
     <a class="home" href="index.html" title="Homepage">Home</a>
     <a class="email" href="mailto:shwatgal@gmail.com" target="_blank" title="Email">Email</a>
     <a class="linkedin" href="https://in.linkedin.com/in/shsinghal" target="_blank" title="LinkedIn">LinkedIn</a>
-    <a class="git" href="https://github.com/shtgl" target="_blank" title="Github">GitHub</a>
+    <a class="git" href="https://github.com/shtgl" target="_blank" title="GitHub">GitHub</a>
   </nav>
 
+  <!-- Embedded CV -->
   <object data="cv/Resume-Shashwat_Singhal.pdf" type="application/pdf" title="Embedded PDF Viewer">
     Your browser does not support PDFs. <a href="cv/Resume-Shashwat_Singhal.pdf" target="_blank">Download PDF</a>.
   </object>
 
+  <!-- Cursor JS -->
+  <script>
+    const cursor = document.querySelector('.cursor');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
+    });
+    document.addEventListener('mousedown', () => cursor.classList.add('clicked'));
+    document.addEventListener('mouseup', () => cursor.classList.remove('clicked'));
+  </script>
 </body>
 </html>
