@@ -214,24 +214,37 @@
       cursor: none;
       background: #2d2d2d;
       min-height: 0;
+      position: relative;
     }
 
-    #pdfContainer::-webkit-scrollbar {
+    #canvasWrapper {
+      flex: 1;
+      width: 100%;
+      overflow-y: scroll;
+      overflow-x: auto;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px;
+      cursor: none;
+    }
+
+    #canvasWrapper::-webkit-scrollbar {
       width: 10px;
       height: 10px;
     }
 
-    #pdfContainer::-webkit-scrollbar-track {
+    #canvasWrapper::-webkit-scrollbar-track {
       background: rgba(255,255,255,0.05);
       border-radius: 5px;
     }
 
-    #pdfContainer::-webkit-scrollbar-thumb {
+    #canvasWrapper::-webkit-scrollbar-thumb {
       background: rgba(255,255,255,0.3);
       border-radius: 5px;
     }
 
-    #pdfContainer::-webkit-scrollbar-thumb:hover {
+    #canvasWrapper::-webkit-scrollbar-thumb:hover {
       background: rgba(255,255,255,0.5);
     }
 
@@ -337,7 +350,7 @@
                         </span>
                         <button id="nextPage">Next</button>
                     </div>
-                    <div style="overflow-y: auto; overflow-x: auto; flex: 1; width: 100%; display: flex; justify-content: center; align-items: flex-start;">
+                    <div id="canvasWrapper">
                         <canvas id="pdfCanvas"></canvas>
                     </div>
                 </div>
@@ -405,8 +418,8 @@ async function renderPage(num) {
   try {
     const page = await pdfDoc.getPage(num);
     
-    // Render at higher scale for better quality
-    const scale = 1.8;
+    // Render at good quality scale
+    const scale = 2.0;
     const viewport = page.getViewport({ scale: scale });
     
     canvas.height = viewport.height;
@@ -433,7 +446,8 @@ async function renderPage(num) {
     nextBtn.disabled = (num >= pdfDoc.numPages);
     
     // Scroll to top when page changes
-    container.scrollTop = 0;
+    const wrapper = document.getElementById('canvasWrapper');
+    if (wrapper) wrapper.scrollTop = 0;
     
   } catch (error) {
     console.error('Error rendering page:', error);
