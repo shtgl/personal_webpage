@@ -12,6 +12,7 @@
   --cv-purple: rgb(163, 86, 185);
   --cv-lightpurple: rgb(239, 180, 255);
   --email-red: rgb(255, 193, 193);
+  --navbar-height: 76px; /* navbar height variable */
 }
 
 /* ========== GLOBAL RESET & BODY ========== */
@@ -28,7 +29,7 @@ body {
   color: white;
   cursor: none;
   overflow-x: hidden;
-  padding-top: 60px;
+  padding-top: calc(var(--navbar-height) + 20px); /* Dynamic padding based on navbar */
 }
 
 /* ========== NAVBAR ========== */
@@ -63,6 +64,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  font-size: 15px;
 }
 
 .navbar a:hover {
@@ -165,17 +167,16 @@ body {
   width: 94%;
   max-width: 1000px;
   padding: 40px 30px;
-  margin: 100px auto 40px auto;
+  margin: 30px auto 40px auto; /* Reduced top margin */
   border-radius: 24px;
   padding-left: 4%;
   padding-right: 4%;
 
   /* Match email modal style */
-  background: #fffce684; /* Solid white background */
-  color: #444444;      /* Black text for clarity */
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25); /* subtle shadow */
-
-  border: 2px solid rgb(213, 213, 213); /* dark purple like email heading */
+  background: #fffce684;
+  color: #444444;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+  border: 2px solid rgb(213, 213, 213);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -184,12 +185,21 @@ body {
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
 }
 
-.logo { text-align: center; margin-bottom: 4%; }
+.logo { 
+  text-align: center; 
+  margin-bottom: 4%; 
+}
 
-.logo img { width: clamp(400px, 20%, 220px); border-radius: 3px; margin-top: 15px; }
+.logo img {
+  width: 80%;
+  max-width: 220px;
+  height: auto;
+  border-radius: 3px;
+  margin-top: 15px;
+}
 
 .content p {
-  color: #444444; /* softer black for paragraphs */
+  color: #444444;
   text-align: justify;
   line-height: 1.7;
 }
@@ -228,6 +238,7 @@ ul > li {
   color: inherit;
 }
 
+/* ========== EMAIL MODAL ========== */
 .email-modal {
   position: fixed;
   inset: 0;
@@ -246,22 +257,21 @@ ul > li {
 }
 
 .email-content {
-  background: #ffffff; /* Solid white background */
+  background: #ffffff;
   border-radius: 16px;
   padding: 28px 30px;
   width: 90%;
   max-width: 360px;
   text-align: center;
-  color: #444444; /* Black text for clarity */
+  color: #444444;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
   transform: translateY(-10px);
   opacity: 0;
   animation: slideUp 0.4s ease forwards;
 }
 
-/* Custom heading color */
 .email-content h2 {
-  color: rgb(110, 68, 155); /* dark purple tone */
+  color: rgb(110, 68, 155);
   font-size: 1.3rem;
   margin-bottom: 10px;
   font-weight: 600;
@@ -271,7 +281,7 @@ ul > li {
 .email-content p {
   margin-bottom: 18px;
   font-size: 0.9rem;
-  color: #444444; /* softer black */
+  color: #444444;
 }
 
 .email-options {
@@ -325,7 +335,7 @@ iframe {
   width: 94%;
   max-width: 1000px;
   height: 120vh;
-  margin: 100px auto 40px auto;
+  margin: 30px auto 40px auto; /* Reduced top margin */
   display: block;
   border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.25);
@@ -334,37 +344,230 @@ iframe {
   backdrop-filter: blur(12px);
 }
 
-/* ========== RESPONSIVE ========== */
+/* ========== RESPONSIVE BREAKPOINTS ========== */
+
+/* Tablets and smaller laptops */
 @media (max-width: 768px) {
+  :root {
+    --navbar-height: 56px;
+  }
+
+  body {
+    padding-top: calc(var(--navbar-height) + 15px);
+  }
+
   .navbar {
     width: 96%;
-    gap: 16px;
-    padding: 10px;
+    gap: 12px;
+    padding: 8px 15px;
     border-radius: 18px;
+    top: 12px;
+  }
+
+  .navbar a {
+    padding: 8px 10px;
+    font-size: 13px;
+    gap: 4px;
+  }
+
+  .container {
+    width: 95%;
+    padding: 30px 20px;
+    margin: 20px auto 30px auto;
+    border-radius: 18px;
+  }
+
+  .logo img {
+    width: 75%;
+    max-width: 200px;
   }
 
   object,
   iframe {
     width: 96%;
     height: 80vh;
+    margin: 20px auto 30px auto;
+  }
+
+  .email-content {
+    padding: 24px 26px;
+    max-width: 340px;
   }
 }
 
+/* Mobile devices */
 @media (max-width: 480px) {
+  :root {
+    --navbar-height: 180px; /* Taller for stacked layout */
+  }
+
+  body {
+    padding-top: calc(var(--navbar-height) + 10px);
+    cursor: auto; /* Remove custom cursor on mobile */
+  }
+
+  .cursor {
+    display: none; /* Hide custom cursor on mobile */
+  }
+
   .navbar {
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
     align-items: stretch;
+    padding: 10px 12px;
+    width: 92%;
+    top: 10px;
   }
 
   .navbar a {
     justify-content: center;
-    padding: 10px;
+    padding: 10px 8px;
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .container {
+    width: 92%;
+    padding: 25px 18px;
+    margin: 15px auto 25px auto;
+    border-radius: 16px;
+  }
+
+  .logo img {
+    width: 70%;
+    max-width: 180px;
+    margin-top: 10px;
+  }
+
+  h3 {
+    font-size: clamp(16px, 1.4vw + 10px, 20px);
+    margin-top: 15px;
+  }
+
+  ul {
+    margin-left: 12px;
+    padding-left: 8px;
+    padding-right: 8px;
   }
 
   object,
   iframe {
     width: 94%;
     height: 65vh;
+    margin: 15px auto 25px auto;
+    border-radius: 12px;
+  }
+
+  .email-content {
+    padding: 22px 20px;
+    max-width: 320px;
+    width: 92%;
+  }
+
+  .email-content h2 {
+    font-size: 1.2rem;
+  }
+
+  .email-content p {
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+  }
+
+  .email-gateway,
+  #closeModal {
+    padding: 12px 10px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Very small mobile devices */
+@media (max-width: 400px) {
+  :root {
+    --navbar-height: 190px;
+  }
+
+  body {
+    padding-top: calc(var(--navbar-height) + 8px);
+  }
+
+  .navbar {
+    width: 90%;
+    padding: 8px 10px;
+    gap: 5px;
+  }
+
+  .navbar a {
+    padding: 9px 6px;
+    font-size: 13px;
+  }
+
+  .container {
+    width: 90%;
+    padding: 20px 15px;
+    margin: 12px auto 20px auto;
+  }
+
+  .logo img {
+    width: 65%;
+    max-width: 160px;
+  }
+
+  h3 {
+    font-size: clamp(15px, 1.3vw + 9px, 18px);
+  }
+
+  .content p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  ul {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  object,
+  iframe {
+    width: 92%;
+    height: 60vh;
+    margin: 12px auto 20px auto;
+  }
+
+  .email-content {
+    padding: 20px 18px;
+    width: 90%;
+  }
+}
+
+/* Landscape orientation fixes for mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  :root {
+    --navbar-height: 56px;
+  }
+
+  body {
+    padding-top: calc(var(--navbar-height) + 10px);
+  }
+
+  .navbar {
+    flex-direction: row;
+    gap: 10px;
+    padding: 6px 12px;
+    top: 8px;
+  }
+
+  .navbar a {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .container {
+    margin: 15px auto 25px auto;
+  }
+
+  object,
+  iframe {
+    height: 85vh;
+    margin: 15px auto 25px auto;
   }
 }
