@@ -5,301 +5,185 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shashwat Singhal</title>
   <link rel="icon" type="image/x-icon" href="images/home.png">
-  <style>
-    :root{
-      --green: rgb(41, 166, 19);
-      --gold: rgb(255, 248, 193);
-      --linkedin-blue: rgb(193, 222, 255);
-      --shadow-1: 2px 2px 6px rgba(0,0,0,0.45);
-      --shadow-2: -2px -2px 6px rgba(255,255,255,0.05);
-      --pill-bg: rgba(255,255,255,0.08);
-      --bg-dark: #1a1a1a;
-      --bg-card: rgba(45,52,73,0.85);
-      --text-light: #ebebeb;
-      --cv-purple: rgb(242, 193, 255);
-      --email-red: rgb(255, 193, 193);
-    }
-
-    *{ box-sizing:border-box; margin:0; padding:0; }
-    body{
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg,#3662d3,#93aae2);
-      min-height:100vh;
-      color:white;
-      cursor:none;
-      overflow-x:hidden;
-      padding-top:60px;
-    }
-
-    /* Navbar */
-    .navbar {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 30px;
-      padding: 10px 30px;
-      width: 90%;
-      max-width: 700px;
-      border-radius: 28px;
-      background: rgba(83, 83, 83, 0.31);
-      border: 1px solid rgba(255,255,255,0.25);
-      backdrop-filter: blur(18px) saturate(160%);
-      -webkit-backdrop-filter: blur(18px) saturate(160%);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.4);
-      position: fixed;
-      top: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1000;
-    }
-
-    .navbar a {
-      text-decoration: none;
-      padding: 8px 14px;
-      border-radius: 10px;
-      background: rgba(116, 133, 241, 0.584);
-      transition: all 0.25s ease-in-out;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .navbar a:hover {
-      transform: translateY(-2px);
-    }
-    .cv{ color: var(--cv-purple); }
-    .email{ color: var(--email-red); }
-    .linkedin{ color: var(--linkedin-blue); }
-    .git{ color: var(--gold); }
-
-    /* Custom Cursor */
-    .cursor{
-      position:fixed;
-      top:0;
-      left:0;
-      width:25px;
-      height:25px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-      border:2px solid rgba(255,255,255,0.7);
-      border-radius:50%;
-      transform: translate(-50%,-50%);
-      pointer-events:none;
-      transition: transform 0.15s ease-out,width 0.2s,height 0.2s,background 0.2s;
-      backdrop-filter:blur(3px);
-      z-index:2000;
-    }
-    .cursor.hover{
-      width:35px;
-      height:35px;
-      border-color: rgba(255,255,255,0.9);
-      background: rgba(255,255,255,0.1);
-    }
-    .cursor.click{
-      transform: translate(-50%,-50%) scale(0.8);
-      background: rgba(255,255,255,0.2);
-    }
-
-    /* Page Transition Overlay */
-    .page-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #3662d3, #93aae2);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.4s ease, visibility 0.4s ease;
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .page-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .page-overlay .loader {
-      width: 50px;
-      height: 50px;
-      border: 4px solid rgba(255,255,255,0.3);
-      border-top: 4px solid white;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    .container{
-      width: 94%;
-      max-width: 1000px;
-      height: 100%;
-      padding-top: 30px;
-      padding-bottom: 30px;
-      margin: 100px auto 40px auto;
-      display: block;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.25);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-      background: rgba(255,255,255,0.05);
-      backdrop-filter: blur(12px);
-    }
-    .logo{text-align:center;margin-bottom:12px;}
-    .logo img{
-      width:clamp(300px,20%,220px);
-      border-radius:3px;
-      margin-top: 15px;
-    }
-
-    .content{
-      max-width:900px;
-      margin:10px auto;
-      text-align:justify;
-      color: var(--text-light);
-      padding: 0 20px;
-    }
-    .content p{ line-height:1.7; }
-
-    h3{
-      color: var(--cv-purple);
-      margin-top:18px;
-      font-size:clamp(18px,1.6vw+12px,24px);
-    }
-
-    ul{ margin-left:18px; margin-top:8px; }
-    ul>li{ margin-bottom:6px; }
-
-    .cert,.edu,.exp,.pro{
-      color: var(--text-light);
-      text-decoration:none;
-      padding:0 3px;
-    }
-    .projects a,.certifications a{ text-decoration:none;color:inherit; }
-
-    @media(max-width:768px){
-      .navbar{ width:96%; padding:6px; border-radius:16px; }
-      .navbar a{ justify-content:center; padding:8px; }
-    }
-    @media(max-width:480px){
-      .navbar{ flex-direction:column; gap:8px; align-items:stretch; }
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<nav class="navbar" role="navigation" aria-label="Main navigation">
-  <a class="cv" href="cv.html" id="cvLink" title="CV">CV</a>
-  <a class="email" href="mailto:shwatgal@gmail.com" target="_blank" title="Email">Email</a>
-  <a class="linkedin" href="https://in.linkedin.com/in/shsinghal" target="_blank" title="LinkedIn">LinkedIn</a>
-  <a class="git" href="https://github.com/shtgl" target="_blank" title="Github">GitHub</a>
-</nav>
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <a class="cv" href="cv.html" id="cvLink" title="CV">CV</a>
+    <a class="email" href="mailto:shwatgal@gmail.com" target="_blank" title="Email">Email</a>
+    <a class="linkedin" href="https://in.linkedin.com/in/shsinghal" target="_blank" title="LinkedIn">LinkedIn</a>
+    <a class="git" href="https://github.com/shtgl" target="_blank" title="Github">GitHub</a>
+  </nav>
 
-<!-- Page Transition Overlay -->
-<div class="page-overlay" id="pageOverlay">
-  <div class="loader"></div>
-</div>
+  <!-- Page Transition Overlay -->
+  <div class="page-overlay" id="pageOverlay">
+    <div class="loader"></div>
+  </div>
 
-<div class="cursor"></div>
+  <div class="cursor"></div>
 
-<script>
-const cursor = document.querySelector('.cursor');
-const links = document.querySelectorAll('a');
-const cvLink = document.getElementById('cvLink');
-const overlay = document.getElementById('pageOverlay');
-
-// Custom cursor
-document.addEventListener('mousemove', e => {
-  cursor.style.top = e.clientY + 'px';
-  cursor.style.left = e.clientX + 'px';
-});
-
-document.addEventListener('mousedown', () => {
-  cursor.classList.add('click');
-});
-
-document.addEventListener('mouseup', () => {
-  cursor.classList.remove('click');
-});
-
-links.forEach(link => {
-  link.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-  link.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-});
-
-// CV link with overlay transition
-cvLink.addEventListener('click', (e) => {
-  e.preventDefault();
-  
-  // Show overlay
-  overlay.classList.add('active');
-  
-  // Navigate after animation
-  setTimeout(() => {
-    window.location.href = 'cv.html';
-  }, 400);
-});
-</script>
-
-  <main>
-    <section class="container" aria-labelledby="intro">
-      <div class="logo">
-        <img src="./images/logo.png" alt="Shashwat logo">
+  <!-- Email Modal -->
+  <div class="email-modal" id="emailModal">
+    <div class="email-content">
+      <h2>Choose Your Email Service</h2>
+      <p>Select how you’d like to send me an email:</p>
+      <div class="email-options">
+        <button class="email-gateway" data-service="gmail"> Gmail</button>
+        <button class="email-gateway" data-service="outlook"> Outlook</button>
+        <button class="email-gateway" data-service="yahoo"> Yahoo</button>
+        <button id="closeModal">Cancel</button>
       </div>
+    </div>
+  </div>
 
-      <article class="content" id="intro">
-        <p>
-          Shashwat Singhal, a Computer Science graduate, has recently been exploring the evolving world of Generative AI through an internship experience. Technology often takes up a fair share of his curiosity, while games and books fill the quieter hours. Each day tends to be about trying something new, learning along the way, and keeping a sense of balance between what can be shaped and what simply unfolds on its own.
-        </p>
+  <script>
+    /* === Email Gateway Logic === */
+    const emailBtn = document.querySelector('.email');
+    const emailModal = document.getElementById('emailModal');
+    const closeModal = document.getElementById('closeModal');
+    const gatewayButtons = document.querySelectorAll('.email-gateway');
 
-        <h3>Experience</h3>
-        <div class="experience">
-          <p><strong>Generative AI Research Intern | <a class="exp" href="https://www.disruptivenext.com/" target="_blank">DisruptiveNext</a></strong> (Dec 2024 - Jun 2025)</p>
-          <ul>
-            <li>Built web-scraping pipelines to collect structured data from online sources and used LangSmith tracing to track LLM calls for better monitoring.</li>
-            <li>Designed agent workflows with the Model Context Protocol (MCP) so LLM agents could use server tools for multi-step tasks.</li>
-            <li>Wrote task-focused docstrings to make agent actions easier to understand, improving reliability in tool-based tasks.</li>
-            <li>Developed a conversational bot with Microsoft Azure Bot Service that supports context-aware, multi-turn user interactions.</li>
-          </ul>
+    // open modal
+    emailBtn.addEventListener('click', e => {
+      e.preventDefault();
+      emailModal.classList.add('active');
+    });
+
+    // close modal
+    closeModal.addEventListener('click', () => {
+      emailModal.classList.remove('active');
+    });
+
+    // open chosen email service
+    gatewayButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const service = btn.getAttribute('data-service');
+        const email = "shwatgal@gmail.com";
+        const subject = encodeURIComponent("Hello Shashwat!");
+        const body = encodeURIComponent("Hi Shashwat,\n\nI came across your portfolio and wanted to reach out to you.\n\nBest regards,\n[Your Name]");
+        
+        let url = "";
+
+        if (service === "gmail") {
+          url = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
+        } else if (service === "outlook") {
+          url = `https://outlook.live.com/mail/0/deeplink/compose?to=${email}&subject=${subject}&body=${body}`;
+        } else if (service === "yahoo") {
+          url = `https://compose.mail.yahoo.com/?to=${email}&subject=${subject}&body=${body}`;
+        }
+
+        if (url) {
+          // ✅ open as a smaller popup
+          const popupWidth = 800;
+          const popupHeight = 700;
+          const left = (screen.width / 2) - (popupWidth / 2);
+          const top = (screen.height / 2) - (popupHeight / 2);
+          
+          window.open(
+            url,
+            "emailCompose",
+            `width=${popupWidth},height=${popupHeight},top=${top},left=${left},resizable=yes,scrollbars=yes,status=no`
+          );
+          
+          emailModal.classList.remove('active');
+        }
+      });
+    });
+
+  const cursor = document.querySelector('.cursor');
+  const links = document.querySelectorAll('a');
+  const cvLink = document.getElementById('cvLink');
+  const overlay = document.getElementById('pageOverlay');
+
+  // Custom cursor
+  document.addEventListener('mousemove', e => {
+    cursor.style.top = e.clientY + 'px';
+    cursor.style.left = e.clientX + 'px';
+  });
+
+  document.addEventListener('mousedown', () => {
+    cursor.classList.add('click');
+  });
+
+  document.addEventListener('mouseup', () => {
+    cursor.classList.remove('click');
+  });
+
+  links.forEach(link => {
+    link.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+    link.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+  });
+
+  // CV link with overlay transition
+  cvLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    
+    // Show overlay
+    overlay.classList.add('active');
+    
+    // Navigate after animation
+    setTimeout(() => {
+      window.location.href = 'cv.html';
+    }, 400);
+  });
+  </script>
+
+    <main>
+      <section class="container" aria-labelledby="intro">
+        <div class="logo">
+          <img src="./images/logo.png" alt="Shashwat logo">
         </div>
 
-        <h3>Education</h3>
-        <div class="education">
-          <ul>
-            <li><a class="edu">MIT World Peace University, Pune | B. Tech. Computer Science and Engineering</a></li>
-            <li><a class="edu">Namo Rims Junior College, Pune | Higher Secondary Certificate</a></li>
-            <li><a class="edu">Indira National School, Pune | Secondary School Certificate</a></li>
-          </ul>
-        </div>
+        <article class="content" id="intro">
+          <p>
+            Shashwat Singhal, a Computer Science graduate, has recently been exploring the evolving world of Generative AI through an internship experience. Technology often takes up a fair share of his curiosity, while games and books fill the quieter hours. Each day tends to be about trying something new, learning along the way, and keeping a sense of balance between what can be shaped and what simply unfolds on its own.
+          </p>
 
-        <h3>Projects</h3>
-        <div class="projects">
-          <ul>
-            <li><a class="pro" href="https://github.com/shtgl/household_finances_app" target="_blank">Household Finance App | Sep 2025</a></li>
-            <li><a class="pro" href="https://github.com/Vital-98/Web-RAG-Agent" target="_blank">Smart Rag WebScraper | Aug 2025</a></li>
-            <li><a class="pro" href="https://github.com/shtgl/MRIBrainTumor/" target="_blank">Brain Tumor Classification | Nov 2024</a></li>
-            <li><a class="pro" href="https://github.com/shtgl/ThreatClassifier" target="_blank">Threat Object Classification | May 2024</a></li>
-            <li><a class="pro" href="https://github.com/shtgl/crop_health_nn" target="_blank">Plant Disease Classification | Dec 2023</a></li>
-            <li><a class="pro" href="https://github.com/shtgl/community_blog_page" target="_blank">Community Blog Page | Nov 2023</a></li>
-          </ul>
-        </div>
+          <h3>Experience</h3>
+          <div class="experience">
+            <p>Generative AI Research Intern | <a class="exp" href="https://www.disruptivenext.com/" target="_blank">DisruptiveNext</a> (Dec 2024 - Jun 2025)</p>
+            <ul>
+              <li>Built web-scraping pipelines to collect structured data from online sources and used LangSmith tracing to track LLM calls for better monitoring.</li>
+              <li>Designed agent workflows with the Model Context Protocol (MCP) so LLM agents could use server tools for multi-step tasks.</li>
+              <li>Wrote task-focused docstrings to make agent actions easier to understand, improving reliability in tool-based tasks.</li>
+              <li>Developed a conversational bot with Microsoft Azure Bot Service that supports context-aware, multi-turn user interactions.</li>
+            </ul>
+          </div>
 
-        <h3>Certifications</h3>
-        <div class="certifications">
-          <ul>
-            <li><a class="cert" href="https://www.coursera.org/account/accomplishments/professional-cert/FKI9Y5AQK0WV" target="_blank">Data Analytics | DeepLearning.AI | Jun 2025</a></li>
-            <li><a class="cert" href="https://www.coursera.org/account/accomplishments/professional-cert/NQEJS97G3GP3" target="_blank">Tensorflow Developer | DeepLearning.AI | Aug 2023</a></li>
-            <li><a class="cert" href="https://www.mygreatlearning.com/certificate/TFADDIMW" target="_blank">MySQL Basics | Great Learning | Mar 2023</a></li>
-          </ul>
-        </div>
+          <h3>Education</h3>
+          <div class="education">
+            <ul>
+              <li><a class="edu">MIT World Peace University, Pune | B. Tech. Computer Science and Engineering</a></li>
+              <li><a class="edu">Namo Rims Junior College, Pune | Higher Secondary Certificate</a></li>
+              <li><a class="edu">Indira National School, Pune | Secondary School Certificate</a></li>
+            </ul>
+          </div>
 
-      </article>
-    </section>
-  </main>
+          <h3>Projects</h3>
+          <div class="projects">
+            <ul>
+              <li><a class="pro" href="https://github.com/shtgl/household_finances_app" target="_blank">Household Finance App | Sep 2025</a></li>
+              <li><a class="pro" href="https://github.com/Vital-98/Web-RAG-Agent" target="_blank">Smart Rag WebScraper | Aug 2025</a></li>
+              <li><a class="pro" href="https://github.com/shtgl/MRIBrainTumor/" target="_blank">Brain Tumor Classification | Nov 2024</a></li>
+              <li><a class="pro" href="https://github.com/shtgl/ThreatClassifier" target="_blank">Threat Object Classification | May 2024</a></li>
+              <li><a class="pro" href="https://github.com/shtgl/crop_health_nn" target="_blank">Plant Disease Classification | Dec 2023</a></li>
+              <li><a class="pro" href="https://github.com/shtgl/community_blog_page" target="_blank">Community Blog Page | Nov 2023</a></li>
+            </ul>
+          </div>
+
+          <h3>Certifications</h3>
+          <div class="certifications">
+            <ul>
+              <li><a class="cert" href="https://www.coursera.org/account/accomplishments/professional-cert/FKI9Y5AQK0WV" target="_blank">Data Analytics | DeepLearning.AI | Jun 2025</a></li>
+              <li><a class="cert" href="https://www.coursera.org/account/accomplishments/professional-cert/NQEJS97G3GP3" target="_blank">Tensorflow Developer | DeepLearning.AI | Aug 2023</a></li>
+              <li><a class="cert" href="https://www.mygreatlearning.com/certificate/TFADDIMW" target="_blank">MySQL Basics | Great Learning | Mar 2023</a></li>
+            </ul>
+          </div>
+
+        </article>
+      </section>
+    </main>
 
 </body>
 </html>

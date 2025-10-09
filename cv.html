@@ -5,127 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Shashwat's CV</title>
   <link rel="icon" type="image/x-icon" href="images/cv.png">
-  <style>
-    :root{
-      --green: rgb(193, 255, 193);
-      --gold: rgb(255, 248, 193);
-      --linkedin-blue: rgb(193, 222, 255);
-      --shadow-1: 2px 2px 6px rgba(0,0,0,0.45);
-      --shadow-2: -2px -2px 6px rgba(255,255,255,0.05);
-      --pill-bg: rgba(255,255,255,0.08);
-      --bg-dark: #1a1a1a;
-      --bg-card: rgba(45,52,73,0.85);
-      --text-light: #ffffff;
-      --cv-purple: rgb(242, 193, 255);
-      --email-red: rgb(255, 193, 193);;
-    }
-
-
-    *{ box-sizing:border-box; margin:0; padding:0; }
-    body{
-      font-family: Arial, Helvetica, sans-serif;
-      background: linear-gradient(135deg,#3662d3,#93aae2);
-      min-height:100vh;
-      color:white;
-      cursor:none;
-      overflow-x:hidden;
-      padding-top:60px;
-    }
-
-    body { padding-top: 80px; }
-
-    /* === Custom Cursor === */
-    .cursor {
-      width: 22px;
-      height: 22px;
-      border: 2px solid rgba(255,255,255,0.7);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-      border-radius: 50%;
-      position: fixed;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      z-index: 2000;
-      transition: transform 0.15s ease, border-color 0.2s ease, background-color 0.2s ease;
-      backdrop-filter: blur(3px);
-    }
-    .cursor.hovered {
-      transform: translate(-50%, -50%) scale(1.6);
-      border-color: var(--gold);
-      background-color: rgba(255,255,255,0.1);
-    }
-    .cursor.clicked {
-      transform: translate(-50%, -50%) scale(0.8);
-      border-color: var(--green);
-      background-color: rgba(255,255,255,0.15);
-    }
-
-    /* Navbar */
-    .navbar {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 30px;
-      padding: 10px 30px;
-      width: 90%;
-      max-width: 700px;
-      border-radius: 28px;
-      background: rgba(83, 83, 83, 0.31);
-      border: 1px solid rgba(255,255,255,0.25);
-      backdrop-filter: blur(18px) saturate(160%);
-      -webkit-backdrop-filter: blur(18px) saturate(160%);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.4);
-      position: fixed;
-      top: 18px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1000;
-    }
-
-    .navbar a {
-      text-decoration: none;
-      padding: 8px 14px;
-      border-radius: 10px;
-      background: rgba(116, 133, 241, 0.584);
-      transition: all 0.25s ease-in-out;
-      /* color: inherit; */
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .navbar a:hover {
-      transform: translateY(-2px);
-    }
-    .home { color: var(--green); }
-    .email { color: var(--red); }
-    .linkedin { color: var(--linkedin-blue); }
-    .git { color: var(--gold); }
-
-    /* === CV Viewer Styling === */
-    object, iframe {
-      width: 94%;
-      max-width: 1000px;
-      height: 120vh;
-      margin: 100px auto 40px auto;
-      display: block;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.25);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-      background: rgba(255,255,255,0.05);
-      backdrop-filter: blur(12px);
-    }
-
-    /* === Responsive === */
-    @media(max-width:768px){
-      .navbar { width: 96%; gap: 16px; padding: 10px; border-radius: 18px; }
-      object, iframe{ width: 96%; height: 80vh; }
-    }
-    @media(max-width:480px){
-      .navbar { flex-direction: column; gap: 8px; align-items: stretch; }
-      .navbar a { justify-content: center; padding: 10px; }
-      object, iframe{ width: 94%; height: 65vh; }
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <!-- Custom Cursor -->
@@ -133,19 +13,39 @@
 
   <!-- Navbar -->
   <nav class="navbar" role="navigation" aria-label="Main navigation">
-    <a class="home" href="index.html" title="Homepage">Home</a>
+    <a class="home" href="index.html" id="homeLink" title="Homepage">Home</a>
     <a class="email" href="mailto:shwatgal@gmail.com" target="_blank" title="Email">Email</a>
     <a class="linkedin" href="https://in.linkedin.com/in/shsinghal" target="_blank" title="LinkedIn">LinkedIn</a>
     <a class="git" href="https://github.com/shtgl" target="_blank" title="GitHub">GitHub</a>
   </nav>
 
+  <!-- Page Transition Overlay (same style as index.html) -->
+  <div class="page-overlay" id="pageOverlay">
+    <div class="loader"></div>
+  </div>
+
   <!-- Embedded CV -->
   <object data="cv/Resume-Shashwat_Singhal.pdf" type="application/pdf" title="Embedded PDF Viewer">
-    Your browser does not support PDFs. <a href="cv/Resume-Shashwat_Singhal.pdf" target="_blank">Download PDF</a>.
+    Your browser does not support PDFs. 
+    <a href="cv/Resume-Shashwat_Singhal.pdf" target="_blank">Download PDF</a>.
   </object>
 
-  <!-- Cursor JS -->
+  <!-- Email Modal -->
+  <div class="email-modal" id="emailModal">
+    <div class="email-content">
+      <h2>Choose Your Email Service</h2>
+      <p>Select how you’d like to send me an email:</p>
+      <div class="email-options">
+        <button class="email-gateway" data-service="gmail"> Gmail</button>
+        <button class="email-gateway" data-service="outlook"> Outlook</button>
+        <button class="email-gateway" data-service="yahoo"> Yahoo</button>
+        <button id="closeModal">Cancel</button>
+      </div>
+    </div>
+  </div>
+
   <script>
+    /* === Cursor === */
     const cursor = document.querySelector('.cursor');
     document.addEventListener('mousemove', e => {
       cursor.style.left = e.clientX + 'px';
@@ -157,6 +57,81 @@
     });
     document.addEventListener('mousedown', () => cursor.classList.add('clicked'));
     document.addEventListener('mouseup', () => cursor.classList.remove('clicked'));
+
+    /* === Page Transition for Home Link === */
+    const homeLink = document.getElementById('homeLink');
+    const overlay = document.getElementById('pageOverlay');
+
+    homeLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      overlay.classList.add('active');
+
+      // navigate after fade-in animation
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 400);
+    });
+
+    /* === Fade-in effect when CV loads === */
+    window.addEventListener('load', () => {
+      document.body.style.opacity = 0;
+      setTimeout(() => {
+        document.body.style.transition = 'opacity 0.6s ease';
+        document.body.style.opacity = 1;
+      }, 50);
+    });
+
+    const emailBtn = document.querySelector('.email');
+    const emailModal = document.getElementById('emailModal');
+    const closeModal = document.getElementById('closeModal');
+    const gatewayButtons = document.querySelectorAll('.email-gateway');
+
+    // open modal
+    emailBtn.addEventListener('click', e => {
+      e.preventDefault();
+      emailModal.classList.add('active');
+    });
+
+    // close modal
+    closeModal.addEventListener('click', () => {
+      emailModal.classList.remove('active');
+    });
+
+    // open chosen email service
+    gatewayButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const service = btn.getAttribute('data-service');
+        const email = "shwatgal@gmail.com";
+        const subject = encodeURIComponent("Hello Shashwat!");
+        const body = encodeURIComponent("Hi Shashwat,\n\nI came across your portfolio and wanted to reach out to you.\n\nBest regards,\n[Your Name]");
+        
+        let url = "";
+
+        if (service === "gmail") {
+          url = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
+        } else if (service === "outlook") {
+          url = `https://outlook.live.com/mail/0/deeplink/compose?to=${email}&subject=${subject}&body=${body}`;
+        } else if (service === "yahoo") {
+          url = `https://compose.mail.yahoo.com/?to=${email}&subject=${subject}&body=${body}`;
+        }
+
+        if (url) {
+          // ✅ open as a smaller popup
+          const popupWidth = 800;
+          const popupHeight = 700;
+          const left = (screen.width / 2) - (popupWidth / 2);
+          const top = (screen.height / 2) - (popupHeight / 2);
+          
+          window.open(
+            url,
+            "emailCompose",
+            `width=${popupWidth},height=${popupHeight},top=${top},left=${left},resizable=yes,scrollbars=yes,status=no`
+          );
+          
+          emailModal.classList.remove('active');
+        }
+      });
+    });
   </script>
 </body>
 </html>
