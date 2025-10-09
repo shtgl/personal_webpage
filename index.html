@@ -10,7 +10,7 @@
 <body>
 
   <nav class="navbar" role="navigation" aria-label="Main navigation">
-    <a class="cv" href="cv.html" id="cvLink" title="CV">CV</a>
+    <a class="cv" href="#" id="cvLink" title="CV">CV</a>
     <a class="email" href="mailto:shwatgal@gmail.com" target="_blank" title="Email">Email</a>
     <a class="linkedin" href="https://in.linkedin.com/in/shsinghal" target="_blank" title="LinkedIn">LinkedIn</a>
     <a class="git" href="https://github.com/shtgl" target="_blank" title="Github">GitHub</a>
@@ -38,33 +38,46 @@
   </div>
 
   <script>
-    /* === Email Gateway Logic === */
+    /* =========================
+      Global DOM References
+    ========================= */
     const emailBtn = document.querySelector('.email');
     const emailModal = document.getElementById('emailModal');
     const closeModal = document.getElementById('closeModal');
     const gatewayButtons = document.querySelectorAll('.email-gateway');
 
-    // open modal
-    emailBtn.addEventListener('click', e => {
+    const cvLink = document.getElementById('cvLink');
+    const overlay = document.getElementById('pageOverlay');
+
+    const cursor = document.querySelector('.cursor');
+    const links = document.querySelectorAll('a');
+
+    /* =========================
+      EMAIL MODAL LOGIC
+    ========================= */
+
+    // Open email modal
+    emailBtn.addEventListener('click', (e) => {
       e.preventDefault();
       emailModal.classList.add('active');
     });
 
-    // close modal
+    // Close email modal
     closeModal.addEventListener('click', () => {
       emailModal.classList.remove('active');
     });
 
-    // open chosen email service
+    // Open selected email service in popup
     gatewayButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         const service = btn.getAttribute('data-service');
         const email = "shwatgal@gmail.com";
         const subject = encodeURIComponent("Hello Shashwat!");
-        const body = encodeURIComponent("Hi Shashwat,\n\nI came across your portfolio and wanted to reach out to you.\n\nBest regards,\n[Your Name]");
-        
-        let url = "";
+        const body = encodeURIComponent(
+          "Hi Shashwat,\n\nI came across your portfolio and wanted to reach out to you.\n\nBest regards,\n[Your Name]"
+        );
 
+        let url = "";
         if (service === "gmail") {
           url = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
         } else if (service === "outlook") {
@@ -74,60 +87,66 @@
         }
 
         if (url) {
-          // ✅ open as a smaller popup
           const popupWidth = 800;
           const popupHeight = 700;
           const left = (screen.width / 2) - (popupWidth / 2);
           const top = (screen.height / 2) - (popupHeight / 2);
-          
+
           window.open(
             url,
             "emailCompose",
             `width=${popupWidth},height=${popupHeight},top=${top},left=${left},resizable=yes,scrollbars=yes,status=no`
           );
-          
+
           emailModal.classList.remove('active');
         }
       });
     });
 
-  const cursor = document.querySelector('.cursor');
-  const links = document.querySelectorAll('a');
-  const cvLink = document.getElementById('cvLink');
-  const overlay = document.getElementById('pageOverlay');
+    /* =========================
+      CV POPUP LOGIC
+    ========================= */
 
-  // Custom cursor
-  document.addEventListener('mousemove', e => {
-    cursor.style.top = e.clientY + 'px';
-    cursor.style.left = e.clientX + 'px';
-  });
+    cvLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      overlay.classList.add('active'); // Optional page transition overlay
 
-  document.addEventListener('mousedown', () => {
-    cursor.classList.add('click');
-  });
+      const cvUrl = "https://drive.google.com/file/d/1vPFhgtIBqc6vnZN-D8_g87zThsxIdNR-/preview";
 
-  document.addEventListener('mouseup', () => {
-    cursor.classList.remove('click');
-  });
+      const popupWidth = 900;
+      const popupHeight = 700;
+      const left = (screen.width / 2) - (popupWidth / 2);
+      const top = (screen.height / 2) - (popupHeight / 2);
 
-  links.forEach(link => {
-    link.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-    link.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-  });
+      window.open(
+        cvUrl,
+        "cvPreview",
+        `width=${popupWidth},height=${popupHeight},top=${top},left=${left},resizable=yes,scrollbars=yes,status=no`
+      );
 
-  // CV link with overlay transition
-  cvLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    
-    // Show overlay
-    overlay.classList.add('active');
-    
-    // Navigate after animation
-    setTimeout(() => {
-      window.location.href = 'cv.html';
-    }, 400);
-  });
+      // Remove overlay after popup opens (smooth UX)
+      setTimeout(() => overlay.classList.remove('active'), 500);
+    });
+
+    /* =========================
+      CUSTOM CURSOR LOGIC
+    ========================= */
+
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.top = e.clientY + 'px';
+      cursor.style.left = e.clientX + 'px';
+    });
+
+    document.addEventListener('mousedown', () => cursor.classList.add('click'));
+    document.addEventListener('mouseup', () => cursor.classList.remove('click'));
+
+    links.forEach(link => {
+      link.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+      link.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
   </script>
+
 
     <main>
       <section class="container" aria-labelledby="intro">
