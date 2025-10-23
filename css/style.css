@@ -1,26 +1,10 @@
 /* ========== CSS VARIABLES ========== */
 :root {
-  --green: #d5e4d9;
-  --gold: rgb(255, 248, 193);
-  --linkedin-blue: rgb(193, 222, 255);
-  --shadow-1: 2px 2px 6px rgba(0, 0, 0, 0.45);
-  --shadow-2: -2px -2px 6px rgba(255, 255, 255, 0.05);
-  --pill-bg: rgba(255, 255, 255, 0.08);
-  --bg-dark: #1a1a1a;
-  --bg-card: rgba(45, 52, 73, 0.85);
-  --text-light: #ebebeb;
-  --cv-purple: rgb(163, 86, 185);
-  --cv-lightpurple: rgb(239, 180, 255);
-  --email-red: rgb(255, 193, 193);
-  --navbar-height: 76px; /* navbar height variable */
+  --navbar-height: 76px;
 }
 
-/* ========== GLOBAL RESET & BODY ========== */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* ========== GLOBAL RESET ========== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -29,7 +13,14 @@ body {
   color: white;
   cursor: none;
   overflow-x: hidden;
-  padding-top: calc(var(--navbar-height) + 20px); /* Dynamic padding based on navbar */
+  padding-top: calc(var(--navbar-height) + 20px);
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2% 0 -7%;
 }
 
 /* ========== NAVBAR ========== */
@@ -39,96 +30,87 @@ body {
   align-items: center;
   gap: 30px;
   padding: 10px 30px;
-  width: 90%;
-  max-width: 700px;
-  border-radius: 28px;
-  background: rgba(83, 83, 83, 0.31);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  width: 30%;
+  border-radius: 18px;
+  background: rgba(83,83,83,0.31);
+  border: 1px solid rgba(255,255,255,0.25);
   backdrop-filter: blur(18px) saturate(160%);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.4);
   position: fixed;
-  top: 18px;
-  left: 50%;
+  top: 18px; left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
 }
 
 .navbar a {
   text-decoration: none;
-  padding: 8px 14px;
-  border-radius: 10px;
+  padding: 10px 16px;
+  border-radius: 8px;
   background: #8faa96;
   transition: all 0.25s ease-in-out;
-  font-weight: 500;
+  font-weight: 640;
   display: inline-flex;
   align-items: center;
   gap: 6px;
   font-size: 15px;
+  color: #eaeaea;
 }
 
-.navbar a:hover {
-  transform: translateY(-2px);
-}
-
-.cv {
-  color: var(--cv-lightpurple);
-}
-
-.home {
-  color: var(--green);
-}
-
-.email {
-  color: var(--email-red);
-}
-
-.linkedin {
-  color: var(--linkedin-blue);
-}
-
-.git {
-  color: var(--gold);
-}
+.navbar a:hover { transform: translateY(-0.5px); }
 
 /* ========== CUSTOM CURSOR ========== */
 .cursor {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 25px;
-  height: 25px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  border: 2px solid rgba(255, 255, 255, 0.7);
+  top: 0; left: 0;
+  width: 15px; height: 15px;
+  border: 2px solid rgba(255,255,255,0.7);
   border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
   transform: translate(-50%, -50%);
   pointer-events: none;
   transition: transform 0.15s ease-out, width 0.2s, height 0.2s, background 0.2s;
   backdrop-filter: blur(3px);
-  z-index: 2000;
+  z-index: 4000;
 }
 
-.cursor.hover,
-.cursor.hovered {
-  width: 35px;
-  height: 35px;
-  border-color: rgba(255, 255, 255, 0.9);
-  background: rgba(255, 255, 255, 0.1);
+.cursor.hover, .cursor.hovered {
+  width: 20px; height: 20px;
+  border-color: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.1);
 }
 
-.cursor.click,
-.cursor.clicked {
+.cursor.click, .cursor.clicked {
   transform: translate(-50%, -50%) scale(0.8);
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255,255,255,0.2);
 }
 
-/* ========== PAGE OVERLAY (index only) ========== */
+/* ========== COPY EMAIL ========== */
+.copy-email {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  background: #f7f7f7;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+.copy-email:hover { background: #eaeaea; color: #000; }
+
+.copy-message {
+  display: none;
+  font-size: 0.85rem;
+  color: #4caf50;
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+/* ========== PAGE OVERLAY ========== */
 .page-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: #2c2c2c;
   opacity: 0;
   visibility: hidden;
@@ -138,436 +120,195 @@ body {
   align-items: center;
   justify-content: center;
 }
-
-.page-overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
+.page-overlay.active { opacity: 1; visibility: visible; }
 
 .page-overlay .loader {
-  width: 50px;
-  height: 50px;
-  border: 4px solid rgba(255, 255, 255, 0.3);
+  width: 50px; height: 50px;
+  border: 4px solid rgba(255,255,255,0.3);
   border-top: 4px solid white;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
+@keyframes spin { to { transform: rotate(360deg); } }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* ========== CONTAINER & CONTENT (index) ========== */
+/* ========== CONTAINER ========== */
 .container {
   width: 94%;
-  max-width: 1000px;
+  max-width: 50%;
   padding: 40px 30px;
-  margin: 30px auto 40px auto; /* Reduced top margin */
+  margin: 5% auto 20%;
   border-radius: 24px;
-  padding-left: 4%;
-  padding-right: 4%;
-
-  /* Match email modal style */
   background: #F5F7EC;
-  color: #444444;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #444;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.25);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+.container:hover { transform: translateY(-0.5px); box-shadow: 0 8px 14px rgba(0,0,0,0.25); }
 
-.container:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
+.proj { margin-top: 8%; }
+
+.row { display: flex; margin-top: -3%; }
+.column { flex: 50%; padding: 10px; }
+
+.card {
+  position: relative;
+  border-radius: 15px;
+  padding: 10%;
+  margin: 5%;
+  background: #F5F7EC;
+  color: #444;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover { box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
+
+/* Tooltip */
+.card::after, .card::before {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.card::after {
+  content: "Click to visit link";
+  bottom: 100%; left: 50%;
+  transform: translateX(-50%) translateY(-18px);
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+.card::before {
+  content: "";
+  bottom: calc(100% - 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: rgba(0,0,0,0.75);
+}
+.card:hover::after, .card:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-30%);
 }
 
-.logo { 
-  text-align: center; 
-  margin-bottom: 4%; 
-}
-
+/* ========== LOGO ========== */
+.logo { text-align: center; margin-top: 4%; }
 .logo img {
-  width: 80%;
-  max-width: 220px;
-  height: auto;
-  border-radius: 3px;
-  margin-top: 15px;
+  width: 150px; height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  border: 2px solid rgba(0,0,0,0.12);
 }
 
+/* ========== CONTENT ========== */
 .content p {
-  color: #444444;
+  color: #444;
+  margin-top: 10%;
   text-align: justify;
   line-height: 1.7;
 }
 
-h3 {
-  color: var(--cv-purple);
-  margin-top: 18px;
-  font-size: clamp(18px, 1.6vw + 12px, 24px);
-}
-
-ul {
-  margin-left: 18px;
-  margin-top: 8px;
-  text-align: justify;
-  line-height: 1.4;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-
-ul > li {
-  margin-bottom: 6px;
-}
-
-.cert,
-.edu,
-.exp,
-.pro {
-  color: #444444;
-  text-decoration: none;
-  padding: 0 3px;
-}
-
-.projects a,
-.certifications a {
-  text-decoration: none;
-  color: inherit;
-}
+a { text-decoration: none; }
 
 /* ========== EMAIL MODAL ========== */
 .email-modal {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(0,0,0,0.35);
   backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
   display: none;
   justify-content: center;
   align-items: center;
   z-index: 3000;
   animation: fadeIn 0.3s ease forwards;
 }
-
-.email-modal.active {
-  display: flex;
-}
+.email-modal.active { display: flex; }
 
 .email-content {
-  background: #ffffff;
+  background: #fff;
   border-radius: 16px;
   padding: 28px 30px;
   width: 90%;
   max-width: 360px;
   text-align: center;
-  color: #444444;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
-  transform: translateY(-10px);
-  opacity: 0;
+  color: #444;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.25);
   animation: slideUp 0.4s ease forwards;
 }
-
-.email-content h2 {
-  color: rgb(110, 68, 155);
-  font-size: 1.3rem;
-  margin-bottom: 10px;
-  font-weight: 600;
-  letter-spacing: 0.4px;
-}
-
-.email-content p {
-  margin-bottom: 18px;
-  font-size: 0.9rem;
-  color: #444444;
-}
-
 .email-options {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
-
-.email-gateway,
-#closeModal {
+.email-gateway, #closeModal {
   background: #f7f7f7;
   border: 1px solid #dcdcdc;
   border-radius: 10px;
   padding: 10px 12px;
   font-weight: 600;
-  color: #444444;
+  color: #444;
   cursor: pointer;
   transition: all 0.25s ease;
   font-size: 0.9rem;
 }
-
 .email-gateway:hover {
-  background: rgb(233, 226, 255);
-  border-color: rgb(210, 190, 255);
+  background: rgb(233,226,255);
+  border-color: rgb(210,190,255);
   transform: translateY(-2px);
 }
+#closeModal { background: #ececec; }
+#closeModal:hover { background: #ddd; }
 
-#closeModal {
-  background: #ececec;
-  color: #444444;
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(25px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+/* ========== RESPONSIVE STYLES ========== */
+@media (max-width: 1024px) {
+  :root { --navbar-height: 56px; font-size: 16px; }
+  body { padding-top: calc(var(--navbar-height) + 15px); }
+
+  .navbar { gap: 2px; width: 45%; padding: 2px 3px; top: 4%; }
+  .navbar a { padding: 3% 3%; font-size: 16px; margin: 2%; gap: 10%; }
+
+  .container { min-width: 94%; min-height: 100%; padding: 25px 18px; margin-top: 16%; border-radius: 16px; }
+  .proj { margin-top: 18%; }
+  .row { margin-top: -5%; }
+  .email-content { padding: 24px 26px; max-width: 340px; }
+
+  object, iframe { width: 96%; height: 80vh; margin: 20px auto 30px; }
 }
 
-#closeModal:hover {
-  background: #ddd;
-}
-
-/* === Animations === */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes slideUp {
-  from { transform: translateY(25px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-/* ========== EMBEDDED CV VIEWER (cv.html only) ========== */
-object,
-iframe {
-  width: 94%;
-  max-width: 1000px;
-  height: 120vh;
-  margin: 30px auto 40px auto; /* Reduced top margin */
-  display: block;
-  border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-}
-
-/* ========== RESPONSIVE BREAKPOINTS ========== */
-
-/* Tablets and smaller laptops */
-@media (max-width: 768px) {
-  :root {
-    --navbar-height: 56px;
-  }
-
-  body {
-    padding-top: calc(var(--navbar-height) + 15px);
-  }
-
-  .navbar {
-    width: 96%;
-    gap: 12px;
-    padding: 8px 15px;
-    border-radius: 18px;
-    top: 12px;
-  }
-
-  .navbar a {
-    padding: 8px 10px;
-    font-size: 13px;
-    gap: 4px;
-  }
-
-  .container {
-    width: 95%;
-    padding: 30px 20px;
-    margin: 20px auto 30px auto;
-    border-radius: 18px;
-  }
-
-  .logo img {
-    width: 75%;
-    max-width: 200px;
-  }
-
-  object,
-  iframe {
-    width: 96%;
-    height: 80vh;
-    margin: 20px auto 30px auto;
-  }
-
-  .email-content {
-    padding: 24px 26px;
-    max-width: 340px;
-  }
-}
-
-/* Mobile devices */
 @media (max-width: 480px) {
-  :root {
-    --navbar-height: 180px; /* Taller for stacked layout */
-  }
+  :root { --navbar-height: 180px; font-size: 12px; }
+  body { padding-top: calc(var(--navbar-height) + 6%); cursor: auto; }
+  .cursor { display: none; }
 
-  body {
-    padding-top: calc(var(--navbar-height) + 10px);
-    cursor: auto; /* Remove custom cursor on mobile */
-  }
+  .navbar { gap: 6px; padding: 3%; width: 90%; top: 5%; }
+  .navbar a { justify-content: center; padding: 10px 8px; font-size: 12px; width: 100%; }
 
-  .cursor {
-    display: none; /* Hide custom cursor on mobile */
-  }
+  .container { margin-top: -10%; }
+  .proj { margin-top: 6%; }
+  .row { margin-top: -5%; }
 
-  .navbar {
-    flex-direction: column;
-    gap: 6px;
-    align-items: stretch;
-    padding: 10px 12px;
-    width: 92%;
-    top: 10px;
-  }
+  h3 { font-size: clamp(16px, 1.4vw + 10px, 20px); margin-top: 15px; }
+  ul { margin: 0 8px 0 12px; padding: 0 8px; }
 
-  .navbar a {
-    justify-content: center;
-    padding: 10px 8px;
-    font-size: 14px;
-    width: 100%;
-  }
+  object, iframe { width: 94%; height: 65vh; margin: 15px auto 25px; border-radius: 12px; }
 
-  .container {
-    width: 92%;
-    padding: 25px 18px;
-    margin: 15px auto 25px auto;
-    border-radius: 16px;
-  }
-
-  .logo img {
-    width: 70%;
-    max-width: 180px;
-    margin-top: 10px;
-  }
-
-  h3 {
-    font-size: clamp(16px, 1.4vw + 10px, 20px);
-    margin-top: 15px;
-  }
-
-  ul {
-    margin-left: 12px;
-    padding-left: 8px;
-    padding-right: 8px;
-  }
-
-  object,
-  iframe {
-    width: 94%;
-    height: 65vh;
-    margin: 15px auto 25px auto;
-    border-radius: 12px;
-  }
-
-  .email-content {
-    padding: 22px 20px;
-    max-width: 320px;
-    width: 92%;
-  }
-
-  .email-content h2 {
-    font-size: 1.2rem;
-  }
-
-  .email-content p {
-    font-size: 0.85rem;
-    margin-bottom: 15px;
-  }
-
-  .email-gateway,
-  #closeModal {
-    padding: 12px 10px;
-    font-size: 0.85rem;
-  }
+  .email-content { padding: 22px 20px; max-width: 320px; width: 92%; }
+  .email-content h2 { font-size: 1.2rem; }
+  .email-content p { font-size: 0.85rem; margin-bottom: 15px; }
+  .email-gateway, #closeModal { padding: 12px 10px; font-size: 0.85rem; }
 }
 
-/* Very small mobile devices */
-@media (max-width: 400px) {
-  :root {
-    --navbar-height: 190px;
-  }
-
-  body {
-    padding-top: calc(var(--navbar-height) + 8px);
-  }
-
-  .navbar {
-    width: 90%;
-    padding: 8px 10px;
-    gap: 5px;
-  }
-
-  .navbar a {
-    padding: 9px 6px;
-    font-size: 13px;
-  }
-
-  .container {
-    width: 90%;
-    padding: 20px 15px;
-    margin: 12px auto 20px auto;
-  }
-
-  .logo img {
-    width: 65%;
-    max-width: 160px;
-  }
-
-  h3 {
-    font-size: clamp(15px, 1.3vw + 9px, 18px);
-  }
-
-  .content p {
-    font-size: 14px;
-    line-height: 1.6;
-  }
-
-  ul {
-    font-size: 14px;
-    line-height: 1.3;
-  }
-
-  object,
-  iframe {
-    width: 92%;
-    height: 60vh;
-    margin: 12px auto 20px auto;
-  }
-
-  .email-content {
-    padding: 20px 18px;
-    width: 90%;
-  }
-}
-
-/* Landscape orientation fixes for mobile */
 @media (max-width: 768px) and (orientation: landscape) {
-  :root {
-    --navbar-height: 56px;
-  }
-
-  body {
-    padding-top: calc(var(--navbar-height) + 10px);
-  }
-
-  .navbar {
-    flex-direction: row;
-    gap: 10px;
-    padding: 6px 12px;
-    top: 8px;
-  }
-
-  .navbar a {
-    padding: 6px 10px;
-    font-size: 12px;
-  }
-
-  .container {
-    margin: 15px auto 25px auto;
-  }
-
-  object,
-  iframe {
-    height: 85vh;
-    margin: 15px auto 25px auto;
-  }
+  :root { --navbar-height: 56px; }
+  body { padding-top: calc(var(--navbar-height) + 10px); }
+  .navbar { flex-direction: row; gap: 10px; padding: 6px 12px; top: 8px; }
+  .navbar a { padding: 6px 10px; font-size: 12px; }
+  .container { margin-top: -10%; }
+  object, iframe { height: 85vh; margin: 15px auto 25px; }
 }

@@ -5,14 +5,14 @@
   <meta name="description" content="Author: Shashwat Singhal; Profession: Analyst, Software Developer; Location: Pune, India">
   <meta name="google-site-verification" content="HMd7P9X_0-UWDDnBnMGntUcYLiiQXSWM3b5d_vlokXo" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shashwat Singhal</title>
-  <link rel="icon" type="image/x-icon" href="images/home.png">
+  <title>Projects</title>  
+  <link rel="icon" type="image/x-icon" href="images/env.png">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <nav class="navbar" role="navigation" aria-label="Main navigation">
-    <a class="project" href="projects.html" title="Projects">Projects</a>
-    <a class="cv" href="#" id="cvLink" title="CV">CV</a>
+    <a class="home" href="index.html" title="Home">Home</a>
+    <a class="project" href="https://github.com/shtgl" target="_blank" title="GitHub">GitHub</a>
     <a class="email" href="mailto:shwatgal@gmail.com" target="_blank" title="shwatgal@gmail.com">Email</a>
   </nav>
   
@@ -23,6 +23,7 @@
   
   <div class="cursor"></div>
   
+  <!-- Email Modal -->
   <div class="email-modal" id="emailModal">
     <div class="email-content">
       <h1>Reach Me @</h1><br><br>
@@ -35,33 +36,9 @@
   </div>
   
   <script>
-    const cvLink = document.getElementById('cvLink');
-    
     /* =========================
-    CV POPUP LOGIC
+    Global DOM References
     ========================= */
-    cvLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      
-      // Show optional overlay effect
-      overlay.classList.add('active');
-      
-      const cvUrl = "https://drive.google.com/file/d/1vPFhgtIBqc6vnZN-D8_g87zThsxIdNR-/preview";
-      const popupWidth = 900;
-      const popupHeight = 700;
-      const left = (screen.width / 2) - (popupWidth / 2);
-      const top = (screen.height / 2) - (popupHeight / 2);
-      
-      window.open(
-      cvUrl,
-      "cvPreview",
-      `width=${popupWidth},height=${popupHeight},top=${top},left=${left},resizable=yes,scrollbars=yes,status=no`
-      );
-      
-      // Hide overlay after a short delay for smoother UX
-      setTimeout(() => overlay.classList.remove('active'), 500);
-    });
-    
     const emailBtn = document.querySelector('.email');
     const emailModal = document.getElementById('emailModal');
     const closeModal = document.getElementById('closeModal');
@@ -75,6 +52,7 @@
     EMAIL MODAL LOGIC
     ========================= */
     
+    // Open email modal
     // Open email modal
     emailBtn.addEventListener('click', (e) => {
       e.preventDefault();
@@ -92,6 +70,7 @@
         emailModal.classList.remove('active');
       }
     });
+    
     
     /* =========================
     CUSTOM CURSOR LOGIC
@@ -134,20 +113,48 @@
     
   </script>
   
-  <main>
-    <section class="container" aria-labelledby="intro">
-      <div class="logo">
-        <img src="./images/logo.png" alt="Shashwat logo">
+  <div class="proj">
+    <div class="row">
+      <div class="column">
+        <div class="card" onclick="window.location.href='https://github.com/shtgl/household_finances_app'"> 
+          <h3>Household Finance App</h3>
+        </div>
       </div>
       
-      <article class="content" id="intro">
-        <h1>Shashwat Singhal</h1>
-        <p>
-          The study of Computer Science and Engineering has been a steady way for me to explore how ideas take shape through logic and structure. Working with data, code, and small projects has helped me understand that progress often comes from small, consistent steps rather than sudden answers.
-          
-          Each new concept adds another piece to the larger picture I’m trying to understand. I prefer to learn through observation and reflection, letting curiosity guide me toward clearer and simpler ways of thinking.
-        </p>
-  </main>
+      <div class="column">
+        <div class="card" onclick="window.location.href='https://github.com/Vital-98/Web-RAG-Agent'">
+          <h3>Smart Rag WebScraper</h3>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="column">
+        <div class="card" onclick="window.location.href='https://github.com/shtgl/brain_tumor_nn/'">
+          <h3>Brain Tumor Classification</h3>
+        </div>
+      </div>
       
+      <div class="column">
+        <div class="card" onclick="window.location.href='https://github.com/shtgl/threat_object_nn'">
+          <h3>Threat Object Classification</h3>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <div class="card" onclick="window.location.href='https://github.com/shtgl/crop_health_nn'">
+          <h3>Plant Disease Classification</h3>
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="card" onclick="window.location.href='https://github.com/shtgl/community_blog_page'">
+          <h3>Community Blog Page</h3>
+        </div>
+      </div>
+      
+    </div>
+  </div>  
 </body>
 </html>
