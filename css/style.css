@@ -1,9 +1,7 @@
-/* ========== CSS VARIABLES ========== */
 :root {
   --navbar-height: 76px;
 }
 
-/* ========== GLOBAL RESET ========== */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -23,7 +21,6 @@ h1 {
   margin: 2% 0 -7%;
 }
 
-/* ========== NAVBAR ========== */
 .navbar {
   display: flex;
   justify-content: center;
@@ -162,7 +159,6 @@ h1 {
 }
 .card:hover { box-shadow: 0 2px 6px rgba(0,0,0,0.25); }
 
-/* Tooltip */
 .card::after, .card::before {
   position: absolute;
   opacity: 0;
@@ -191,8 +187,6 @@ h1 {
   opacity: 1;
   transform: translateX(-50%) translateY(-30%);
 }
-
-/* ========== LOGO ========== */
 .logo { text-align: center; margin-top: 4%; }
 .logo img {
   width: 150px; height: 150px;
@@ -203,7 +197,6 @@ h1 {
   border: 2px solid rgba(0,0,0,0.12);
 }
 
-/* ========== CONTENT ========== */
 .content p {
   color: #444;
   margin-top: 10%;
@@ -294,7 +287,6 @@ a { text-decoration: none; }
   .row { margin-top: -5%; }
 
   h3 { font-size: clamp(16px, 1.4vw + 10px, 20px); margin-top: 15px; }
-  ul { margin: 0 8px 0 12px; padding: 0 8px; }
 
   object, iframe { width: 94%; height: 65vh; margin: 15px auto 25px; border-radius: 12px; }
 
